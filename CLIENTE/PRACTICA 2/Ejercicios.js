@@ -79,6 +79,7 @@ function ej9() {
     console.log("El día de la semana es:", dias[num]);
     alert("El día de la semana es: " + dias[num]);
 }
+//EJ 10
 function sumaLista(arr) {
     let suma = 0;
     for (let i = 0; i < arr.length; i++) {
