@@ -1,4 +1,6 @@
 function enviarFormulario() {
+
+    //RECOJEMOS DATOS FORMULARIO
     const nombre = document.getElementById("nombre")
     const apellido = document.getElementById("apellido")
     const fechaNacimiento = document.getElementById("fecha")
@@ -15,15 +17,34 @@ function enviarFormulario() {
     //ARRAY PARA AÑADIR ERRORES A CONTENEDOR
     const errores = [];
 
-    //ERRORES DE CAMPO VACIO
-    const datos = [nombre,apellido,fechaNacimiento,tipoDocumento,documento,contrasena,repetirContrasena,correo,repetirCorreo,telefono,numeroSoporte];
+    // Llamamos a las funciones
+    validarCamposVacios([nombre,apellido,fechaNacimiento,tipoDocumento,documento,contrasena,repetirContrasena,correo,repetirCorreo,telefono,numeroSoporte], errores);
+    validarFechaNacimiento(fechaNacimiento, errores);
+    validarDocumento(tipoDocumento, documento, errores);
+    validarContrasenas(contrasena, repetirContrasena, errores);
+    validarCorreos(correo, repetirCorreo, errores);
+    validarTelefono(telefono, errores);
+    validarConsentimiento(consentimiento, errores);
 
+    //CONTENEDOR DE ERRORES
+    mostrarErroresOEnviar(errores);
+}
+
+//FUNCIONES DE VALIDACION
+
+function validarCamposVacios(datos, errores) {
+
+    //ERRORES DE CAMPO VACIO
     for (let i = 0; i < datos.length; i++) {
         if(datos[i].value.trim()==""){
             let nombre=datos[i].id;
             errores.push('El campo "'+ nombre +'" es obligatorio.');
         }
     }
+}
+
+
+function validarFechaNacimiento(fechaNacimiento, errores) {
 
     //VALIDAR FECHA DE NACIMIENTO
     let fecha = new Date(fechaNacimiento.value);
@@ -39,6 +60,10 @@ function enviarFormulario() {
     if (edad<18){
         errores.push('Debe ser mayor de 18 años');
     }
+}
+
+
+function validarDocumento(tipoDocumento, documento, errores) {
 
     //VALIDAR TIPO DOCUMENTO (DNI/NIE)
     if (tipoDocumento.value === "DNI") {
@@ -95,6 +120,10 @@ function enviarFormulario() {
             }
         }
     }
+}
+
+
+function validarContrasenas(contrasena, repetirContrasena, errores) {
 
     //VALIDAR CONTRASEÑAS
     if (repetirContrasena.value !== contrasena.value) {
@@ -109,6 +138,10 @@ function enviarFormulario() {
     if (!numeros.test(contrasena.value) || !simbolos.test(contrasena.value)) {
         errores.push('La contraseña debe contener al menos un número y un símbolo (!@#%^&*)');
     }
+}
+
+
+function validarCorreos(correo, repetirCorreo, errores) {
 
     //VALIDAR CORREO
     const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -118,6 +151,10 @@ function enviarFormulario() {
     if(repetirCorreo.value!=correo.value){
         errores.push('Los correos no coinciden')
     }
+}
+
+
+function validarTelefono(telefono, errores) {
 
     //VALIDAR TELÉFONO
     if(telefono.value.length<9){
@@ -128,14 +165,18 @@ function enviarFormulario() {
     if(!telefonoRegex.test(telefono.value)){
         errores.push('El telefono debe de empezar por 6, 7, 8, 9 o "+"');
     }
+}
 
+
+function validarConsentimiento(consentimiento, errores) {
     //VALIDAR CONSENTIMIENTO (DECLARACIONES)
     if (!consentimiento){
         errores.push('Debe dar su consentimiento, en el apartado "DECLARACIONES", al tratamiento de sus datos de carácter personal.');
     }
+}
 
-    //CONTENEDOR DE ERRORES
-
+//FUNCION DE CONTENEDOR DE ERRORES Y ENVIAR FORMULARIO
+function mostrarErroresOEnviar(errores) {
     // Recojemos el contenedor de errores hecho en HTML
     const contenedor = document.getElementById("contenedor-errores");
 
@@ -167,6 +208,4 @@ function enviarFormulario() {
         // Envía el formulario al servidor
         document.querySelector("form").submit();
     }
-
-
 }
