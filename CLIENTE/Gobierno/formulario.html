@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Usuario</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="validaciones.js"></script>
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h2 class="titulo">DATOS DEL USUARIO</h2>
+
+    <!-- Contenedor de errores -->
+    <div id="contenedor-errores" class="errores"></div>
+
+    <form>
+
+        <label>Nombre:<span class="campo-obligatorio">*</span></label>
+        <input type="text" id="nombre" placeholder="Juan">
+
+        <label>Primer apellido:<span class="campo-obligatorio">*</span></label>
+        <input type="text" id="apellido" placeholder="Perez">
+
+        <label>Segundo apellido:</label>
+        <input type="text" id="segundoApellido" placeholder="Garcia">
+
+        <label>Fecha nacimiento:<span class="campo-obligatorio">*</span></label>
+        <input type="date" id="fecha">
+
+        <label>Tipo documento:<span class="campo-obligatorio">*</span></label>
+        <select id="tipoDocumento">
+            <option>DNI</option>
+            <option>NIE</option>
+        </select>
+
+        <label>Nº documento:<span class="campo-obligatorio">*</span></label>
+        <input type="text" id="documento" placeholder="12345678A">
+
+        <div class="nota">
+            Este identificador se utilizará como usuario de acceso a la Sede electrónica.
+        </div>
+
+        <label>Contraseña:<span class="campo-obligatorio">*</span></label>
+        <input type="password" id="contrasena" placeholder="Mínimo 12 caracteres y un símbolo (!@#%^&*)">
+
+        <label>Repita contraseña:<span class="campo-obligatorio">*</span></label>
+        <input type="password" id="repetirContrasena" placeholder="Repita la contraseña">
+
+        <label>Número de soporte / IDESPI / IXESP:</label>
+        <input type="text" id="soporte" placeholder="123456789">
+
+        <div class="nota">
+            El texto extraído del formulario original es el siguiente:
+            Este identificador se utilizará como usuario de acceso a la Sede
+            electrónica. Si selecciona como Tipo de Documento DNI deberá informar el IDESP,
+            si por el contrario selecciona NIE deberá informar el IXESP para que
+            el Sistema pueda verificar sus Datos de Identidad con la Dirección
+            General de la Policía.
+        </div>
+
+        <label>Correo electrónico:<span class="campo-obligatorio">*</span></label>
+        <input type="email" id="correo" placeholder="ejemplo@correo.com">
+
+        <label>Repita correo electrónico:<span class="campo-obligatorio">*</span></label>
+        <input type="email" id="repetirCorreo" placeholder="ejemplo@correo.com">
+
+        <label>Teléfono móvil:<span class="campo-obligatorio">*</span></label>
+        <input type="text" id="telefono" placeholder="600123456">
+
+        <div class="nota">
+            El correo electrónico y el teléfono móvil indicados se utilizarán
+            para recibir comunicaciones relativas a los trámites implementados
+            en esta sede electrónica.
+        </div>
+
+        <div class="declaraciones">
+
+            <h2 class="titulo">DECLARACIONES</h2>
+
+            <label class="checkbox-linea">
+                <input type="checkbox" id="acepta-declaracion">
+                Declaro que los datos que figuran en la solicitud de registro son ciertos, 
+                asumiendo las responsabilidades que pudieran derivarse de su inexactitud y
+                autorizando al Ministerio de Educación y Formación Profesional la consulta
+                de los mismos en el Sistema de Verificación de Datos de Identidad de la 
+                Dirección General de la Policía.
+            </label>
+
+            <label class="checkbox-linea">
+                <input type="checkbox">
+                Doy mi consentimiento
+            </label>
+
+            <div class="nota grande">
+
+                <h3>Información importante</h3>
+                <p>
+                    Al firmar esta petición queda establecido que usted presta su consentimiento
+                    expreso al tratamiento de sus datos personales. Lea, antes de firmar, 
+                    la información básica.
+                </p>
+
+                <h3>Información básica</h3>
+                <p>
+                    Los datos personales recogidos serán incorporados en el registro de actividades 
+                    de tratamiento del Ministerio de Educación y Formación Profesional denominado 
+                    SEDE ELECTRÓNICA en cumplimiento del Reglamento General de Protección de Datos:
+                </p>
+
+                <ul class="lista-info">
+                    <li><strong>Responsable del tratamiento:</strong> Subsecretaría de Educación y Formación Profesional</li>
+                    <li><strong>Finalidad:</strong> Registro de los ciudadanos en la sede electrónica del Ministerio.</li>
+                    <li><strong>Legitimación:</strong> Consentimiento del interesado y la orden EDU/947/2010.</li>
+                    <li><strong>Destinatarios:</strong> No están previstos</li>
+                    <li><strong>Derechos:</strong> Acceso, rectificación, limitación del tratamiento, portabilidad, oposición y a no ser objeto de decisiones automatizadas.</li>
+                </ul>
+
+                <p>
+                    Declaro que he leído la INFORMACIÓN BÁSICA referente a los derechos a ejercer.<br>
+                    Puede consultar la información adicional en:<br>
+                    <a href="#">https://sede.educacion.gob.es/registro-electronico/proteccion-datos</a>
+                </p>
+
+            </div>
+
+            <button type="button" class="btn-aceptar" onclick="enviarFormulario()">
+                Aceptar
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
