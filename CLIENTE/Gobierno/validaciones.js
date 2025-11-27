@@ -177,7 +177,6 @@ function validarConsentimiento(consentimiento, errores) {
 
 //FUNCION DE CONTENEDOR DE ERRORES Y ENVIAR FORMULARIO
 function mostrarErroresOEnviar(errores) {
-    // Recojemos el contenedor de errores hecho en HTML
     const contenedor = document.getElementById("contenedor-errores");
 
     // Si hay errores en el array

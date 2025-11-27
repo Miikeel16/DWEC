@@ -101,8 +101,6 @@ label {
 .btn-aceptar:hover {
     background: #135cbc;
 }
-
-/* Estilos para el contenedor de errores */
 .errores {
     background-color: #f8d7da;
     color: #721c24;
